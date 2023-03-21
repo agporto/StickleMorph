@@ -1,2 +1,12 @@
-predictors/predictor.dat
 images/*.jpg
+images/*.JPG
+images/*.PNG
+images/*.png
+images/*.gif
+images/*.GIF
+images/*.bmp
+images/*.BMP
+resources/logo_v2.png
+resources/logo_v3.png
+predictors/*.dat
+*.csv
