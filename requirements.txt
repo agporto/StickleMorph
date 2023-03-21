@@ -5,3 +5,4 @@ numpy
 pandas
 pillow
 streamlit-drawable-canvas
+streamlit-javascript
