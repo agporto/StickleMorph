@@ -29,11 +29,13 @@ def format_labels(predictor):
     """Format predictor labels."""
     return predictor.split("/")[-1].split(".")[0]
     
-def download_csv(session):
+def download_csv(session, filter):
     """Download landmarks data as a CSV."""
     if session['landmarks'] is False:
         session['landmarks'] = session['initial']
     df = pd.DataFrame(session['landmarks'], columns=['x', 'y'])
+    if filter:
+        df = df.drop(index=filter)
     return df.to_csv(index=True).encode("utf-8")
 
 def landmarks_to_fabric(landmarks, point_color, text_color):
@@ -177,7 +179,7 @@ if uploaded_file is not None:
 
     st.sidebar.download_button(
                 label="Download coordinates(CSV)",
-                data=download_csv(st.session_state),
+                data=download_csv(st.session_state, filter),
                 file_name="landmarks.csv",
                 mime="text/csv",
                 use_container_width=True,
