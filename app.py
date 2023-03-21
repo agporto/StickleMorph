@@ -1,4 +1,3 @@
-import csv
 import cv2
 import dlib
 import glob
@@ -175,16 +174,9 @@ if uploaded_file is not None:
             st.session_state.landmarks = [(int(x*1/ratio), int(y*1/ratio)) for x, y in final_df[['x', 'y']].values]
 
     st.sidebar.markdown("## Download")
-    colc,cold = st.sidebar.columns(2)
-    colc.download_button(
-                label="Download TPS",
-                data=download_csv(st.session_state),
-                file_name="landmarks.tps",
-                mime="text/tps",
-                use_container_width=True,
-    )
-    cold.download_button(
-                label="Download CSV",
+
+    st.sidebar.download_button(
+                label="Download coordinates(CSV)",
                 data=download_csv(st.session_state),
                 file_name="landmarks.csv",
                 mime="text/csv",
